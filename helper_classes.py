@@ -28,7 +28,7 @@ class tweet(object):
         response["text"] = self.text
         return response
 
-class hashtablerow(object):
+class HashTableRow(object):
     def __init__(self):
         self.id = None
         self.text = None
@@ -43,7 +43,7 @@ class hashtablerow(object):
         response["text"] = self.text
         return response
 
-class event(object):
+class EventTableRow(object):
     def __init__(self):
         self.id = None
         self.text = None

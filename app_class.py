@@ -46,11 +46,17 @@ def hastag_query(hashtag):
     cur = mysql.connection.cursor()
     cur.execute('SELECT * FROM hastag WHERE' + hashtag + '= text')
     rv = cur.fetchall()
-    temp = hashtablerow()
+    temp = HashTableRow()
     temp._initialize(row)
     d = temp._get_dic()
 
-    # getting the events corresponding to 
+    # getting the events corresponding to hastag id gathered
+    cur.execute('SELECT event_id FROM event_hastag WHERE' + d['id'] + '= hashtag_id')
+    rv = cur.fetchall()
+    temp = EventTableRow()
+    temp._initialize(row)
+    d = temp._get_dic()
+
 
     return d
 
