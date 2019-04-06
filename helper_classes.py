@@ -16,6 +16,7 @@ class tweet(object):
         self.replies = str(data[4])
         self.retweets = str(data[5])
         self.text = str(data[6])
+
     def _get_dic(self):
         response = {}
         response["id"] = self.id
@@ -24,5 +25,35 @@ class tweet(object):
         response["likes"] = self.likes
         response["replies"] = self.replies
         response["retweets"] = self.retweets
+        response["text"] = self.text
+        return response
+
+class hashtablerow(object):
+    def __init__(self):
+        self.id = None
+        self.text = None
+
+    def _initialize(self, data):
+        self.id = str(data[0])
+        self.text = str(data[6])
+
+    def _get_dic(self):
+        response = {}
+        response["id"] = self.id
+        response["text"] = self.text
+        return response
+
+class event(object):
+    def __init__(self):
+        self.id = None
+        self.text = None
+
+    def _initialize(self, data):
+        self.id = str(data[0])
+        self.text = str(data[6])
+
+    def _get_dic(self):
+        response = {}
+        response["id"] = self.id
         response["text"] = self.text
         return response

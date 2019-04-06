@@ -2,7 +2,7 @@ from flask import Flask
 from flask_mysqldb import MySQL 
 from flask import flash, render_template, request, redirect
 from flask import jsonify
-from tweets_class import tweet
+from helper_classes import *
 
 app = Flask(__name__)
 
@@ -39,9 +39,20 @@ def author_query(name):
 
 def hastag_query(hashtag):
     '''
-    input = hastag
+    input = single hastag
     returns  = all tweets corresponding to hastag
     '''
+	# use cursor to query the database
+    cur = mysql.connection.cursor()
+    cur.execute('SELECT * FROM hastag WHERE' + hashtag + '= text')
+    rv = cur.fetchall()
+    temp = hashtablerow()
+    temp._initialize(row)
+    d = temp._get_dic()
+
+    # getting the events corresponding to 
+
+    return d
 
 def event_query(event):
     '''
